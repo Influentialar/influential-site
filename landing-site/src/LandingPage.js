@@ -1,23 +1,13 @@
 
 // src/pages/Landing/LandingPage.js
 import React, { useRef, useState, useEffect } from 'react'
-//import emailjs from 'emailjs-com'
+import emailjs from 'emailjs-com'
 
 import styles from './LandingPage.module.css'
 import heroImage from './hero-landing.svg';
-import slide1 from './slide1-landing.svg'; // tu SVG amarillo con la foto
-import slide2 from './slide2-landing.svg'; // tu SVG amarillo con la foto
-import slide3 from './slide3-landing.svg'; // tu SVG amarillo con la foto
-import slide4 from './slide4-landing.svg'; // tu SVG amarillo con la foto
 import procesoImg from './topics.svg'; // O la ruta que uses
 import logoImg from './logo.svg';
 
-import slide1code from './slide1code.png'; 
-import slide2code from './slide2code.png';
-import slide3code from './slide3code.png';
-import slide4code from './slide4code.png';
-
-import code1 from './slidecodes/Slide1Code';
 import Slide1Code from './slidecodes/Slide1Code';
 import Slide2Code from './slidecodes/Slide2Code';
 import Slide3Code from './slidecodes/Slide3Code';
@@ -96,10 +86,9 @@ export default function LandingPage() {
         </p>
       </section>
 
-      {/*// clave para forzar la animación en cada cambio ->> key={currentSlide}*/}
-      <section className={styles.carouselSection}>
-  <div className={styles.carouselContainer}>
-    {slides.map((slide, index) => (
+<section className={styles.carouselSection}>
+    <div className={styles.carouselContainer}>
+      {slides.map((slide, index) => (
       <div
         key={index}
         className={`${styles.carouselImage} ${currentSlide === index ? styles.active : ''}`}
