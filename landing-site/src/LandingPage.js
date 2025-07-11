@@ -1,7 +1,7 @@
 
 // src/pages/Landing/LandingPage.js
 import React, { useRef, useState, useEffect } from 'react'
-import emailjs from 'emailjs-com'
+//import emailjs from 'emailjs-com'
 
 import styles from './LandingPage.module.css'
 import heroImage from './hero-landing.svg';
@@ -57,6 +57,11 @@ export default function LandingPage() {
         )
     }
 
+    const preregistroref = useRef(null);
+    const irAPreregistro = () => {
+      preregistroref.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+
     return (
       <div className={styles.container}>
         <nav className={styles.navbar}>
@@ -66,8 +71,8 @@ export default function LandingPage() {
            className={styles.logo}
          />
           <div>
-            <button className={styles.buttonRegister} disabled>Registrarse</button> {/* antes buttonDisabled */}
-            <button className={styles.buttonStartSession} disabled>Iniciar sesión</button> {/* antes buttonDisabled */}
+            <button className={styles.buttonRegister} onClick={irAPreregistro} >Registrarse</button> {/* antes buttonDisabled */}
+            <button className={styles.buttonStartSession} >Iniciar sesión</button> {/* antes buttonDisabled */}
           </div>
         </nav>
   
@@ -107,7 +112,7 @@ export default function LandingPage() {
         />
       </section>
 
-      <section className={styles.preregistroSection}>
+      <section className={styles.preregistroSection} ref={preregistroref}>
     <form ref={formRef} onSubmit={handlePreregistro} className={styles.form}>
       <h2 className={styles.formTitle}>Pre registrate</h2>
       <p className={styles.formSubtitle}>
