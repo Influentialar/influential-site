@@ -20,6 +20,10 @@ import Slide4Code from './slidecodes/Slide4Code';
 
 export default function LandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const card1Ref = useRef(null);
+  const card2Ref = useRef(null);
+  const card3Ref = useRef(null);
+  const card4Ref = useRef(null);
   const slides = [<Slide1Code />,
     <Slide2Code />,
     <Slide3Code />,
@@ -27,14 +31,91 @@ export default function LandingPage() {
     const formRef = useRef()
     const [sent, setSent] = useState(false)
 
-    useEffect(() => {
+    /*useEffect(() => {
       const interval = setInterval(() => {
         setCurrentSlide((prev) => (prev + 1) % slides.length);
       }, 5000); // cambia cada 5s
   
       return () => clearInterval(interval);
-    }, [slides.length]);
+    }, [slides.length]);*/
+    // Reemplaza tu useEffect actual con este:
+useEffect(() => {
+  const stackSection = document.querySelector(`.${styles.stackSection}`);
+  const stackCardWraps = document.querySelectorAll(`.${styles.stackCardWrap}`);
+  let lastScrollTop = 0;
+  let isScrolling = false;
   
+  const handleScroll = () => {
+    // Si ya estamos procesando un evento de scroll, evitar ejecutar otro
+    if (isScrolling) return;
+    isScrolling = true;
+    
+    const scrollPosition = window.scrollY;
+    const scrollDirection = scrollPosition > lastScrollTop ? 'down' : 'up';
+    lastScrollTop = scrollPosition;
+    
+    // Obtener la posición de cada tarjeta relativa a la ventana
+    const cardPositions = Array.from(stackCardWraps).map(wrap => {
+      const rect = wrap.getBoundingClientRect();
+      return {
+        top: rect.top,
+        element: wrap,
+        visible: rect.top >= -50 && rect.top <= window.innerHeight
+      };
+    });
+    
+    // Determinar qué tarjeta está más visible
+    const visibleCards = cardPositions.filter(card => card.visible);
+    const mainCard = visibleCards.reduce((prev, current) => 
+      (prev.top > current.top && prev.top < window.innerHeight / 2) ? prev : current, 
+      visibleCards[0] || { element: null }
+    );
+    
+    // Aplicar efectos basados en la tarjeta principal y dirección de scroll
+    cardPositions.forEach(card => {
+      // Quitar la clase shrink de todas las tarjetas primero
+      card.element.classList.remove(styles.shrink);
+      
+      // Si la tarjeta no es la principal y está visible, añadir shrink
+      if (card.element !== mainCard.element && card.visible) {
+        card.element.classList.add(styles.shrink);
+      }
+    });
+    
+    // Permitir nuevos eventos de scroll después de un pequeño retraso
+    setTimeout(() => {
+      isScrolling = false;
+    }, 50);
+  };
+  
+  // Control de velocidad de scroll
+  const handleWheel = (e) => {
+    const isInStackSection = stackSection && stackSection.contains(e.target);
+    
+    if (isInStackSection) {
+      const scrollSpeed = 1.4; // Velocidad ajustable
+      window.scrollBy({
+        top: e.deltaY * scrollSpeed,
+        behavior: 'auto'
+      });
+      
+      e.preventDefault();
+      handleScroll(); // Llamar al manejador de scroll inmediatamente
+    }
+  };
+  
+  // Registrar los eventos
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('wheel', handleWheel, { passive: false });
+  
+  // Activar el primer efecto de scroll al cargar
+  setTimeout(handleScroll, 100);
+  
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener('wheel', handleWheel);
+  };
+}, []);
     const handlePreregistro = e => {
       e.preventDefault()
   
@@ -91,16 +172,31 @@ export default function LandingPage() {
         </p>
       </section>
 
-<section className={styles.carouselSection}>
-    <div className={styles.carouselContainer}>
-      {slides.map((slide, index) => (
-      <div
-        key={index}
-        className={`${styles.carouselImage} ${currentSlide === index ? styles.active : ''}`}
-      >
-        {slide}
+<section className={styles.stackSection}>
+  <div className={styles.stackCardsDesktop}>
+    <div className={`${styles.stackCardWrap} ${styles._1}`}>
+      <div ref={card1Ref} className={styles.stackCard}>
+        {slides[0]}
       </div>
-    ))}
+    </div>
+    
+    <div className={`${styles.stackCardWrap} ${styles._2}`}>
+      <div ref={card2Ref} className={styles.stackCard}>
+        {slides[1]}
+      </div>
+    </div>
+    
+    <div className={`${styles.stackCardWrap} ${styles._3}`}>
+      <div ref={card3Ref} className={styles.stackCard}>
+        {slides[2]}
+      </div>
+    </div>
+    
+    <div className={`${styles.stackCardWrap} ${styles._4}`}>
+      <div ref={card4Ref} className={styles.stackCard}>
+        {slides[3]}
+      </div>
+    </div>
   </div>
 </section>
 
