@@ -1,7 +1,7 @@
 
 // src/pages/Landing/LandingPage.js
 import React, { useRef, useState, useEffect } from 'react'
-//import emailjs from 'emailjs-com'
+import emailjs from 'emailjs-com'
 
 import styles from './LandingPage.module.css'
 import heroImage from './hero-landing.svg';
