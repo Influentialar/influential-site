@@ -31,14 +31,6 @@ export default function LandingPage() {
     const formRef = useRef()
     const [sent, setSent] = useState(false)
 
-    /*useEffect(() => {
-      const interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % slides.length);
-      }, 5000); // cambia cada 5s
-  
-      return () => clearInterval(interval);
-    }, [slides.length]);*/
-    // Reemplaza tu useEffect actual con este:
 useEffect(() => {
   const stackSection = document.querySelector(`.${styles.stackSection}`);
   const stackCardWraps = document.querySelectorAll(`.${styles.stackCardWrap}`);
