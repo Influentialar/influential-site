@@ -9,7 +9,7 @@ export default function Slide2Code() {
               <div>
                 <h4 className={styles.introSlide}>Para Marcas</h4>
                 <h2 className={styles.formTitle}>Campañas con impacto real, no likes vacíos</h2>
-                <p>Influential conecta tu marca con micro y 
+                <p className={styles.slideText}>Influential conecta tu marca con micro y 
                   macro influencers alineados a tus valores. Segmentación precisa, resultados visibles.</p>
               </div>
               <img

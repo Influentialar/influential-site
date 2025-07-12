@@ -9,7 +9,7 @@ export default function Slide3Code(){
               <div>
                 <h4 className={styles.introSlide}>Para Influencers</h4>
                 <h2 className={styles.formTitle}>Tu comunidad vale más de lo que pensás</h2>
-                <p>Monetizá tu audiencia colaborando con marcas que te representan.
+                <p className={styles.slideText}>Monetizá tu audiencia colaborando con marcas que te representan.
                    Sin intermediarios, sin comisiones escondidas.</p>
               </div>
               <img
