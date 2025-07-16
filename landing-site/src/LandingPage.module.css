@@ -445,3 +445,62 @@ body {
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
+
+.popupOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popupContent {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  animation: slideUp 0.3s ease-out;
+}
+
+.popupContent h3 {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  color: #4CAF50;
+}
+
+.popupContent p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.checkIcon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawCheck 1s forwards ease-out;
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
