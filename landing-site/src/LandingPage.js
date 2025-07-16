@@ -4,7 +4,9 @@ import emailjs from 'emailjs-com'
 
 import styles from './LandingPage.module.css'
 import heroImage from './hero-landing.svg';
+import heroImagePhone from './person-phone.svg';
 import procesoImg from './topics.svg';
+import procesoImgPhone from './hero-phone.svg';
 import logoImg from './logo.svg';
 
 import Slide1Code from './slidecodes/Slide1Code';
@@ -128,7 +130,10 @@ export default function LandingPage() {
       </nav>
 
       <section className={styles.heroSection}>
-        <img src={heroImage} alt="Hero completo con texto e influencer" className={styles.fullHeroImage} />
+        <picture>
+          <source media="(max-width: 768px)" srcSet={heroImagePhone} />
+          <img src={heroImage} alt="Hero completo con texto e influencer" className={styles.fullHeroImage} />
+        </picture>
       </section>
 
       <section className={styles.connectSection}>
@@ -149,7 +154,10 @@ export default function LandingPage() {
       </section>
 
       <section className={styles.procesoSection}>
-        <img src={procesoImg} alt="Proceso - cómo funciona Influential" className={styles.procesoImage} />
+        <picture>
+          <source media="(max-width: 768px)" srcSet={procesoImgPhone} />
+          <img src={procesoImg} alt="Proceso - cómo funciona Influential" className={styles.procesoImage} />
+        </picture>
       </section>
 
       <section className={styles.preregistroSection} ref={preregistroref}>
