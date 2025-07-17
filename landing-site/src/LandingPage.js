@@ -1,6 +1,6 @@
 // src/pages/Landing/LandingPage.js
 import React, { useRef, useState, useEffect } from 'react'
-import emailjs from 'emailjs-com'
+//import emailjs from 'emailjs-com'
 
 import styles from './LandingPage.module.css'
 import heroImage from './hero-landing.svg';
@@ -13,6 +13,7 @@ import Slide1Code from './slidecodes/Slide1Code';
 import Slide2Code from './slidecodes/Slide2Code';
 import Slide3Code from './slidecodes/Slide3Code';
 import Slide4Code from './slidecodes/Slide4Code';
+import HeroCode from './slidecodes/HeroCode';
 
 export default function LandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -135,6 +136,10 @@ export default function LandingPage() {
           <img src={heroImage} alt="Hero completo con texto e influencer" className={styles.fullHeroImage} />
         </picture>
       </section>
+
+      {/*pasar HeroImage a codigo*/}
+<HeroCode></HeroCode>
+
 
       <section className={styles.connectSection}>
         <h2 className={styles.title}>Hacemos que conectar sea simple.</h2>
