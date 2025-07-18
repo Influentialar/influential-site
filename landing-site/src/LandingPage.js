@@ -14,6 +14,7 @@ import Slide2Code from './slidecodes/Slide2Code';
 import Slide3Code from './slidecodes/Slide3Code';
 import Slide4Code from './slidecodes/Slide4Code';
 import HeroCode from './slidecodes/HeroCode';
+import SelectionCode from './slidecodes/SelectionCode';
 
 export default function LandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -130,13 +131,6 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      <section className={styles.heroSection}>
-        <picture>
-          <source media="(max-width: 768px)" srcSet={heroImagePhone} />
-          <img src={heroImage} alt="Hero completo con texto e influencer" className={styles.fullHeroImage} />
-        </picture>
-      </section>
-
       {/*pasar HeroImage a codigo*/}
 <HeroCode></HeroCode>
 
@@ -158,12 +152,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className={styles.procesoSection}>
-        <picture>
-          <source media="(max-width: 768px)" srcSet={procesoImgPhone} />
-          <img src={procesoImg} alt="Proceso - cómo funciona Influential" className={styles.procesoImage} />
-        </picture>
-      </section>
+      <SelectionCode></SelectionCode>
 
       <section className={styles.preregistroSection} ref={preregistroref}>
         <form ref={formRef} onSubmit={handlePreregistro} className={styles.form}>
