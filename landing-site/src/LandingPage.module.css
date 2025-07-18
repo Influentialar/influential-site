@@ -299,23 +299,48 @@
 }
 
 @media (max-width: 768px) {
-  .slideImage {
-    display: none !important;  /* <- el !important fuerza que desaparezca */
-  }
-}
-
-@media (max-width: 768px) {
   .slidecode {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
     text-align: center;
   }
 
-  .slidecode div {
-    text-align: center;
+  .slidecode>div {
+    width: 100%;
+    padding-right: 0;
+    max-width: 100%;
+    order: 1;
+    /* Asegura que el texto va primero */
+  }
+
+  .slideImage {
+    display: block !important;
+    /* Anular el display: none */
+    max-width: 85%;
+    /* Ajuste de tamaño para móviles */
+    height: auto;
+    margin: 0 auto;
+    order: 2;
+    /* Asegura que la imagen va después del texto */
+    padding-top: 0.5rem;
+  }
+
+  .introSlide {
+    margin: 0 auto 0.8rem;
+    display: inline-block;
+  }
+
+  .formTitle {
+    font-size: 1.8rem;
+    /* Reducir ligeramente el tamaño del título */
+    margin-bottom: 1rem;
+  }
+
+  .slideText {
+    margin-bottom: 1.2rem;
   }
 }
 
