@@ -54,32 +54,119 @@
 .bannerSwatch:hover {
   transform: scale(1.15);
 }
-/* Onboarding welcome banner */
-.welcomeBanner {
-  background: linear-gradient(135deg, #5f2eea 0%, #a78bfa 100%);
-  color: #fff;
-  border-radius: 1rem;
-  padding: 1.25rem 1.5rem;
+/* ── Onboarding / completion card ── */
+.onboardingCard {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
   margin-bottom: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.welcomeRow {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
 }
-.welcomeIcon {
+.welcomeEmoji { font-size: 2rem; flex-shrink: 0; line-height: 1; }
+.welcomeTitle { margin: 0 0 0.2rem; font-size: 1.05rem; font-weight: 700; color: #111; }
+.welcomeSub   { margin: 0; font-size: 0.85rem; color: #666; line-height: 1.4; }
+
+.completionHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.completionPctBig {
   font-size: 2rem;
+  font-weight: 800;
+  color: #5f2eea;
+  flex-shrink: 0;
+  min-width: 56px;
+}
+.completionBarWrap { flex: 1; }
+.completionBarBg {
+  height: 10px;
+  background: #f0f0f0;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+.completionBarFill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.5s ease, background 0.3s;
+}
+.completionBarLabel {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.checklistGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 0.65rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.checkItemDone {
+  background: #f0fdf4;
+  color: #166534;
+}
+.checkItemMissing {
+  background: #fff1f2;
+  color: #9f1239;
+  border: 1px solid #fecdd3;
+}
+.checkIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
   flex-shrink: 0;
 }
-.welcomeText h3 {
-  margin: 0 0 0.25rem;
-  font-size: 1.1rem;
-  font-weight: 700;
+.checkItemDone .checkIcon {
+  background: #22c55e;
+  color: #fff;
 }
-.welcomeText p {
-  margin: 0;
-  font-size: 0.9rem;
-  opacity: 0.9;
-  line-height: 1.4;
+.checkItemMissing .checkIcon {
+  background: #f43f5e;
+  color: #fff;
 }
+.checkLabel { flex: 1; }
+
+.completeDone {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #166534;
+}
+.completeDone span { font-size: 1.5rem; }
 
 .bannerSwatchActive {
   border-color: #fff;

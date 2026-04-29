@@ -201,24 +201,54 @@ export default function MyProfilePage() {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.completionCard}>
-          <div className={styles.completionTop}>
-            <div>
-              <p className={styles.completionLabel}>
-                {completionPct === 100 ? '¡Perfil completo!' : `Completitud del perfil — ${completionPct}%`}
-              </p>
-              {missing.length > 0 && (
-                <p className={styles.completionMissing}>
-                  Falta: {missing.map(f => f.label).join(', ')}
+
+        {/* ── Onboarding steps (visible solo si el perfil está incompleto) ── */}
+        {completionPct < 100 && (
+          <div className={styles.onboardingCard}>
+            {completionPct === 0 && (
+              <div className={styles.welcomeRow}>
+                <span className={styles.welcomeEmoji}>👋</span>
+                <div>
+                  <p className={styles.welcomeTitle}>¡Bienvenido a Influential!</p>
+                  <p className={styles.welcomeSub}>Completá tu perfil para aparecer en el marketplace y conectar con {role === 'marca' ? 'influencers y creadores' : 'marcas'}.</p>
+                </div>
+              </div>
+            )}
+
+            <div className={styles.completionHeader}>
+              <span className={styles.completionPctBig}>{completionPct}%</span>
+              <div className={styles.completionBarWrap}>
+                <div className={styles.completionBarBg}>
+                  <div
+                    className={styles.completionBarFill}
+                    style={{ width: `${completionPct}%`, background: completionPct < 40 ? '#ef4444' : completionPct < 75 ? '#f59e0b' : '#10b981' }}
+                  />
+                </div>
+                <p className={styles.completionBarLabel}>
+                  {completionPct < 40 ? 'Perfil muy incompleto — no aparecés en búsquedas' :
+                   completionPct < 75 ? 'Perfil en progreso — completá el resto para destacar' :
+                   '¡Casi listo! Terminá los últimos detalles'}
                 </p>
-              )}
+              </div>
             </div>
-            <span className={styles.completionPct}>{completionPct}%</span>
+
+            <div className={styles.checklistGrid}>
+              {completionFields.map((field) => (
+                <div key={field.label} className={`${styles.checkItem} ${field.done ? styles.checkItemDone : styles.checkItemMissing}`}>
+                  <span className={styles.checkIcon}>{field.done ? '✓' : '!'}</span>
+                  <span className={styles.checkLabel}>{field.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className={styles.completionBar}>
-            <div className={styles.completionFill} style={{ width: `${completionPct}%` }} />
+        )}
+
+        {completionPct === 100 && (
+          <div className={styles.completeDone}>
+            <span>🎉</span>
+            <p>¡Perfil completo! Estás apareciendo en el marketplace.</p>
           </div>
-        </div>
+        )}
         <div className={styles.photoSection}>
           <div className={styles.photoWrapper}>
             <img src={profileImg} alt="Foto de perfil" className={styles.profilePhoto} />
