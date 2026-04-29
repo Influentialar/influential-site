@@ -70,8 +70,9 @@ export default function BrandDetailPage() {
               </button>
             </div>
             <div className={styles.profileDetails}>
+              {brand.name && <h3 className={styles.brandName}>{brand.name}</h3>}
               <h2 className={styles.handle}>@{(brand.handle || brand.name || '').replace(/^@/, '').toLowerCase()}</h2>
-              <p className={styles.loc}>📍 {brand.location}</p>
+              {brand.location && <p className={styles.loc}>📍 {brand.location}</p>}
               <p className={styles.bio}>{brand.description}</p>
               {reviewCount > 0 && (
                 <p style={{color:'#f59e0b',fontWeight:600,fontSize:'0.95rem'}}>
