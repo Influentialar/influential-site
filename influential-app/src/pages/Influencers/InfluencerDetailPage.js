@@ -17,10 +17,6 @@ import { useGallery } from '../../lib/useGallery';
 import { useSocialStats } from '../../lib/useSocialStats';
 import styles from './InfluencerDetailPage.module.css';
 import SkeletonDetailPage from '../../components/Skeleton/SkeletonDetailPage';
-import { ReactComponent as UserIcon }        from '../../assets/icon-user.svg';
-import { ReactComponent as InteractionIcon } from '../../assets/icon-interaction.svg';
-import { ReactComponent as LikeIcon }        from '../../assets/icon-like.svg';
-import { ReactComponent as CommentIcon }     from '../../assets/icon-comment.svg';
 
 const tabs = ['Calificaciones', 'Colaboraciones', 'Galería', 'Estadísticas'];
 

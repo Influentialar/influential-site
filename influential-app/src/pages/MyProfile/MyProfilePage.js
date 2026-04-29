@@ -33,7 +33,7 @@ export default function MyProfilePage() {
 
   const igConnected = !!connections.instagram
   const tkConnected = !!connections.tiktok
-  const hasApiKeys = !!INSTAGRAM_CONFIG.clientId || !!TIKTOK_CONFIG.clientKey
+
 
   const [bannerIdx,  setBannerIdx]  = useState(profile?.banner_idx || 0)
   const [name,       setName]       = useState(profile?.name || '')
@@ -65,6 +65,19 @@ export default function MyProfilePage() {
 
   const defaultImg = role === 'marca' ? brandLogo : influencerPhoto
   const profileImg = photoUrl || defaultImg
+
+  // Profile completion
+  const completionFields = [
+    { label: 'Foto de perfil', done: !!photoUrl },
+    { label: 'Handle',         done: !!handle },
+    { label: 'Nombre',         done: !!name },
+    { label: 'Ubicación',      done: !!location },
+    { label: 'Bio',            done: !!bio },
+    { label: 'Categorías',     done: categories.length > 0 },
+    { label: role === 'marca' ? 'Instagram o TikTok' : 'Instagram o TikTok', done: !!instagram || !!tiktok },
+  ]
+  const completionPct = Math.round((completionFields.filter(f => f.done).length / completionFields.length) * 100)
+  const missing = completionFields.filter(f => !f.done)
 
   const handlePhotoUpload = async (e) => {
     const file = e.target.files?.[0]
@@ -188,15 +201,24 @@ export default function MyProfilePage() {
       </div>
 
       <div className={styles.content}>
-        {!profile?.handle && !profile?.bio && (
-          <div className={styles.welcomeBanner}>
-            <span className={styles.welcomeIcon}>👋</span>
-            <div className={styles.welcomeText}>
-              <h3>¡Bienvenido a Influential!</h3>
-              <p>Completá tu perfil para aparecer en el marketplace y empezar a conectar con {role === 'marca' ? 'influencers y creadores' : 'marcas'}. Cuanto más completo, más oportunidades.</p>
+        <div className={styles.completionCard}>
+          <div className={styles.completionTop}>
+            <div>
+              <p className={styles.completionLabel}>
+                {completionPct === 100 ? '¡Perfil completo!' : `Completitud del perfil — ${completionPct}%`}
+              </p>
+              {missing.length > 0 && (
+                <p className={styles.completionMissing}>
+                  Falta: {missing.map(f => f.label).join(', ')}
+                </p>
+              )}
             </div>
+            <span className={styles.completionPct}>{completionPct}%</span>
           </div>
-        )}
+          <div className={styles.completionBar}>
+            <div className={styles.completionFill} style={{ width: `${completionPct}%` }} />
+          </div>
+        </div>
         <div className={styles.photoSection}>
           <div className={styles.photoWrapper}>
             <img src={profileImg} alt="Foto de perfil" className={styles.profilePhoto} />
