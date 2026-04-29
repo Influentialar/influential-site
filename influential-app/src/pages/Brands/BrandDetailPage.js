@@ -70,7 +70,7 @@ export default function BrandDetailPage() {
               </button>
             </div>
             <div className={styles.profileDetails}>
-              <h2 className={styles.handle}>@{brand.handle || brand.name?.toLowerCase()}</h2>
+              <h2 className={styles.handle}>@{(brand.handle || brand.name || '').replace(/^@/, '').toLowerCase()}</h2>
               <p className={styles.loc}>📍 {brand.location}</p>
               <p className={styles.bio}>{brand.description}</p>
               {reviewCount > 0 && (

@@ -10,6 +10,7 @@ import { ReactComponent as TikTokIcon } from '../../assets/tiktok.svg';
 export default function BrandCard({
   id,
   logo,
+  name,
   handle,
   location,
   description,
@@ -44,9 +45,10 @@ export default function BrandCard({
         </div>
 
         {/* TEXTO */}
-        <h4 className={styles.handle}>@{handle.toLowerCase()}</h4>
-        <p className={styles.location}>{location}</p>
-        <p className={styles.description}>{description}</p>
+        {name && <h3 className={styles.name}>{name}</h3>}
+        <h4 className={styles.handle}>@{handle.replace(/^@/, '').toLowerCase()}</h4>
+        {location && <p className={styles.location}>📍 {location}</p>}
+        {description && <p className={styles.description}>{description}</p>}
         <hr className={styles.divider} />
 
         {/* STATS */}
