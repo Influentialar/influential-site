@@ -1,0 +1,147 @@
+.wrapper {
+    font-family: 'Poppins', sans-serif;
+    color: #111;
+  }
+  
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  }
+  .logo { height: 40px; }
+  .nav { display: flex; gap: 1.5rem; }
+  .link { text-decoration: none; color: #111; font-weight: 500; }
+  .btnLogin {
+    background: #ddd; padding: 0.5rem 1rem; border-radius: 1rem;
+    text-decoration: none; color: #111;
+  }
+  
+  /* HERO */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    background: linear-gradient(135deg,#6339e0,#e38be0);
+    padding: 4rem 2rem;
+    border-radius: 1.5rem;
+    margin: 0 2rem;
+  }
+  .heroLeft { color: #fff; }
+  .heroTitle { font-size: 2.5rem; margin-bottom: 2rem; }
+  .ctaPrimary {
+    background: #c7ff40; color: #111; border: none;
+    padding: 0.75rem 2rem; border-radius: 2rem; font-weight: 600;
+    cursor: pointer;
+  }
+  .heroRight {
+    display: flex; justify-content: center;
+  }
+  .cardExample {
+    background: #fff; border-radius: 1.5rem; overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1); max-width: 300px;
+  }
+  .cardPhoto { width: 100%; height: auto; }
+  .cardInfo { padding: 1rem; text-align: center; }
+  .stars { color: #f5c518; margin: 0.5rem 0; }
+  .cardDesc { font-size: 0.875rem; line-height: 1.4; margin: 1rem 0; }
+  .socialStats { display: flex; justify-content: center; gap: 1rem; }
+  .tags { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; }
+  .tags span { background: #f0f0f0; padding: 0.25rem 0.75rem; border-radius: 1rem; }
+  
+  /* WHY */
+  .why {
+    max-width: 700px; margin: 4rem auto 2rem; text-align: center;
+  }
+  .why h2 { font-size: 2rem; }
+  .why p { font-size: 1rem; margin-top: 1rem; }
+  
+  /* FEATURES */
+  .features {
+    margin: 3rem 2rem;
+  }
+  .featureBlock {
+    display: flex; background: #e7ff95; border-radius: 1.5rem; overflow: hidden;
+  }
+  .featureContent { flex:1; padding: 2rem; }
+  .featureLabel {
+    display: inline-block; border:1px solid #111; border-radius:1rem;
+    padding:0.25rem 1rem; font-size:0.75rem; margin-bottom:1rem;
+  }
+  .featureTitle { font-size:1.5rem; margin: 0.5rem 0; }
+  .featureImg { width:50%; object-fit:cover; }
+  
+  /* PROCESS */
+  .process { padding: 4rem 2rem; display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+  .processMain {
+    background: #6339e0; color: #fff; border-radius:1.5rem; padding:2rem;
+  }
+  .processMain h3 { font-size:2rem; }
+  .stepsGrid {
+    display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap:1.5rem;
+  }
+  .stepCard {
+    background:#fff; border-radius:1rem; padding:1.5rem;
+    box-shadow:0 8px 16px rgba(0,0,0,0.1);
+    text-align:center;
+  }
+  .stepIcon { background:#c7ff40; padding:0.75rem; border-radius:50%; margin-bottom:1rem; }
+  .stepCard h4 { margin-bottom:0.5rem; }
+  
+  /* PRE-REGISTER */
+  .prereg {
+    background:#c7ff40; padding:4rem 2rem; border-radius:1.5rem; margin:3rem 2rem;
+  }
+  .prereg h3 { color:#111; font-size:1.75rem; }
+  .preregForm {
+    display:grid; gap:1rem; margin-top:2rem;
+  }
+  .preregForm fieldset { border:none; display:flex; gap:1rem; }
+  .preregForm label { display:flex; flex-direction:column; font-size:0.875rem; color:#111; }
+  .preregForm input, .preregForm select {
+    padding:0.75rem; border:none; border-radius:1rem;
+    margin-top:0.5rem;
+  }
+  .preregForm .ctaPrimary { justify-self:start; }
+  
+  /* PLANS */
+  .plans { text-align:center; padding:4rem 2rem; background:#6339e0; color:#fff; }
+  .plans h2 { font-size:2rem; margin-bottom:2rem; }
+  .plansGrid {
+    display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;
+  }
+  .planCard {
+    background:#fff; color:#111; border-radius:1.5rem; padding:2rem;
+    width:200px; box-shadow:0 8px 16px rgba(0,0,0,0.1);
+  }
+  .planCard h3 { margin-bottom:0.5rem; }
+  .planPrice {
+    background:#ddd; padding:0.25rem 1rem; border-radius:1rem;
+    font-size:0.875rem; float:right;
+  }
+
+@media (max-width: 768px) {
+  .header { padding: 1rem; }
+  .nav { display: none; }
+  .hero {
+    grid-template-columns: 1fr;
+    margin: 0 1rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .heroTitle { font-size: 1.75rem; }
+  .cardExample { max-width: 250px; margin: 0 auto; }
+  .features { margin: 2rem 1rem; }
+  .featureBlock { flex-direction: column; }
+  .featureImg { width: 100%; height: 200px; }
+  .process { grid-template-columns: 1fr; padding: 2rem 1rem; }
+  .stepsGrid { grid-template-columns: 1fr 1fr; }
+  .prereg { margin: 2rem 1rem; padding: 2rem 1.5rem; }
+  .preregForm fieldset { flex-direction: column; }
+  .plansGrid { flex-direction: column; align-items: center; }
+  .planCard { width: 100%; max-width: 300px; }
+}
+  

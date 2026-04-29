@@ -1,0 +1,146 @@
+/* src/components/InfluencerCard/InfluencerCard.module.css */
+
+.linkWrapper {
+  text-decoration: none;
+}
+
+.card {
+  background: #fff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  padding: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 440px;
+}
+
+/* FOTO */
+.photoWrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 110%; /* un poco más alto para cubrir bien */
+  overflow: hidden;
+  background: #eee;
+}
+.photo {
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* CORAZÓN */
+.heartBtn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* USUARIO */
+.handle {
+  margin: 1rem 0 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #000;
+}
+.location {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* CALIFICACIÓN */
+.ratingRow {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0.75rem 0;
+}
+.starFilled {
+  color: #f5c518;
+  font-size: 1.25rem;
+}
+.starEmpty {
+  color: rgba(245, 197, 24, 0.4);
+  font-size: 1.25rem;
+}
+
+/* DESCRIPCIÓN */
+.description {
+  padding: 0 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* DIVISOR */
+.divider {
+  width: 80%;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 0.5rem 0 1rem;
+}
+
+/* SOCIAL */
+.socialRow {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+.socialItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.socialIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* TAGS */
+.tagsRow {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* BOTÓN */
+.contactBtn {
+  width: calc(100% - 3rem);
+  margin-bottom: 1.5rem;
+  background: #5f2eea;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .card { max-width: 100%; }
+  .socialRow { gap: 1rem; }
+  .socialIcon { width: 24px; height: 24px; }
+}

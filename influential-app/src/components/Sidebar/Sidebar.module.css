@@ -1,0 +1,395 @@
+.sidebar {
+  width: 280px;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.searchWrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.search {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  border: 1px solid #ddd;
+  border-radius: 9999px;
+  outline: none;
+}
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  fill: #888;
+}
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.filterIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: #333;
+}
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+.filterSection {
+  margin-bottom: 1.5rem;
+}
+.checkboxGroup,
+.checkboxGroupVertical {
+  display: flex;
+  gap: 1rem;
+}
+.checkboxGroupVertical {
+  flex-direction: column;
+}
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #555;
+}
+.locationWrapper {
+  position: relative;
+}
+.locationInput {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 9999px;
+  outline: none;
+}
+.locationIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: #888;
+}
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.resetBtn {
+  background: none;
+  border: none;
+  color: #5f2eea;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.rangeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+.rangeValue {
+  font-size: 0.875rem;
+  color: #777;
+}
+.rangeSub {
+  font-size: 0.75rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+.rangeWrapper {
+  position: relative;
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+}
+.track {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.thumb {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #5f2eea;
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.starsWrapper {
+  display: flex;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+.star {
+  width: 20px;
+  height: 20px;
+  fill: #f5b50a;
+}
+.starFilled {
+  font-size: 1.5rem;
+  color: #f5b50a;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.starFilled:hover {
+  transform: scale(1.2);
+}
+.starEmpty {
+  font-size: 1.5rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.starEmpty:hover {
+  transform: scale(1.2);
+}
+
+/* Dual range slider */
+.dualRange {
+  position: relative;
+  height: 28px;
+}
+.dualRange .rangeInput {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 28px;
+}
+.dualRange .rangeInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #5f2eea;
+  cursor: pointer;
+  pointer-events: all;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.dualRange .rangeInput::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+}
+.dualRange .rangeInput:first-child::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+/* Single range slider */
+.rangeInputSingle {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  outline: none;
+}
+.rangeInputSingle::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #5f2eea;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* SidebarInfluencers.module.css */
+
+.container {
+  width: 100%;
+  max-width: 320px;
+  padding: 0 1rem;
+}
+
+/* ==== Search Bar ==== */
+.searchWrapper {
+  margin-bottom: 1.5rem;
+}
+.searchInput {
+  width: 90%;
+  height: 48px;
+  border-radius: 24px;
+  border: none;
+  padding: 0 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 1rem;
+  outline: none;
+}
+
+/* ==== Header “Filtros” ==== */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.headerIcon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  fill: #333;
+}
+
+/* ==== Cada grupo de filtro ==== */
+.group {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.groupTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* --- Plataforma --- */
+.platformOptions {
+  display: flex;
+  gap: 1rem;
+}
+.platformOptions label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.platformOptions input {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Ubicación --- */
+.locationWrapper {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border-radius: 24px;
+  padding: 0.5rem 1rem;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+}
+.locationWrapper input {
+  border: none;
+  background: transparent;
+  flex: 1;
+  font-size: 0.95rem;
+  outline: none;
+}
+.locationWrapper .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Tipo de cuenta --- */
+.accountTypeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.accountTypeHeader .reset {
+  font-size: 0.875rem;
+  color: #5f2eea;
+  cursor: pointer;
+}
+.accountList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.accountList label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.accountList input {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Slider genérico --- */
+.sliderGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+.slider {
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+/* --- Valoraciones --- */
+.starsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.stars {
+  display: flex;
+  gap: 0.25rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+/* evita que el último margen sea muy grande */
+.container :last-child {
+  margin-bottom: 0;
+}
+
+.searchWrapper {
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;              /* ajusta para que quede alineado */
+  transform: translateY(-50%);
+  pointer-events: none;    /* para que no bloquee foco/click del input */
+}
+
+.searchInput {
+  width: 80%;
+  padding: 0.75rem 1rem;   /* padding vertical y a la derecha */
+  padding-left: 3rem;      /* deja hueco a la izquierda para el icono */
+  border-radius: 24px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .sidebar { width: 100%; max-width: 100%; }
+  .container { max-width: 100%; padding: 0 0.75rem; }
+  .searchInput { width: 100% !important; }
+}

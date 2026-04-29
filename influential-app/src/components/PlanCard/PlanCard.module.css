@@ -1,0 +1,80 @@
+.card {
+    background: #fff;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s;
+    border: 2px solid transparent;
+  }
+  .card:hover {
+    border-color: #5f2eea33;
+  }
+  .recommended {
+    border-color: #2972ff;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .subtitle {
+    font-size: 1rem;
+    color: #777;
+    margin: 0.25rem 0 0;
+  }
+  .priceBadge {
+    background: #ddd;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 1rem 0;
+  }
+  .featuresList {
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem;
+  }
+  .featureItem {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: #555;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    text-align: left;
+  }
+  .checkIcon {
+    color: #5f2eea;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .button {
+    background: #5f2eea;
+    color: #fff;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    align-self: center;
+  }
+
+@media (max-width: 768px) {
+  .card { padding: 1.5rem; }
+  .title { font-size: 1.5rem; }
+  .header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
+  

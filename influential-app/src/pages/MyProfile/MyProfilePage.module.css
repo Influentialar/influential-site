@@ -1,0 +1,459 @@
+/* src/pages/MyProfile/MyProfilePage.module.css */
+
+.pageWrapper {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+/* Banner */
+.banner {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bannerOverlay {
+  text-align: center;
+  color: #fff;
+}
+.bannerTitle {
+  font-size: 2rem;
+  margin: 0 0 0.25rem;
+}
+.bannerSub {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+.bannerPicker {
+  position: absolute;
+  bottom: 1rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  padding: 0.4rem 0.75rem;
+  border-radius: 20px;
+}
+.bannerPickerLabel {
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.bannerSwatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.bannerSwatch:hover {
+  transform: scale(1.15);
+}
+/* Onboarding welcome banner */
+.welcomeBanner {
+  background: linear-gradient(135deg, #5f2eea 0%, #a78bfa 100%);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.welcomeIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+.welcomeText h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.welcomeText p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+.bannerSwatchActive {
+  border-color: #fff;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2px #333;
+}
+
+/* Content */
+.content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+
+/* Photo section */
+.photoSection {
+  display: flex;
+  justify-content: center;
+  margin-top: -60px;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 5;
+}
+.photoWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.profilePhoto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  background: #fff;
+}
+.changePhotoBtn {
+  background: #5f2eea;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.changePhotoBtn:hover {
+  opacity: 0.9;
+}
+
+/* Messages */
+.successMsg {
+  text-align: center;
+  color: #10b981;
+  background: #ecfdf5;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.errorMsg {
+  text-align: center;
+  color: #e74c3c;
+  background: #fdecea;
+  padding: 0.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Form card */
+.formCard {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+.formTitle {
+  font-size: 1.25rem;
+  margin: 0 0 1.5rem;
+  color: #333;
+}
+.formRow {
+  display: flex;
+  gap: 1rem;
+}
+.formRow .formGroup {
+  flex: 1;
+}
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+.label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.4rem;
+}
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.input:focus {
+  border-color: #5f2eea;
+}
+.input:disabled {
+  background: #f5f5f5;
+  color: #999;
+}
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.textarea:focus {
+  border-color: #5f2eea;
+}
+
+/* Actions */
+.formActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.saveBtn {
+  flex: 1;
+  background: #5f2eea;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.saveBtn:hover {
+  opacity: 0.9;
+}
+.cancelBtn {
+  flex: 1;
+  background: #fff;
+  color: #5f2eea;
+  border: 2px solid #5f2eea;
+  border-radius: 24px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+/* Social connections */
+.socialCards {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.socialCard {
+  flex: 1;
+  border: 2px solid #e0e0e0;
+  border-radius: 16px;
+  padding: 1.25rem;
+  transition: all 0.2s;
+}
+.socialCardConnected {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+.socialCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.socialIcon {
+  font-size: 1.3rem;
+}
+.socialName {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+}
+.socialCardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.socialUser {
+  font-weight: 600;
+  color: #5f2eea;
+  font-size: 0.95rem;
+}
+.socialStats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+.socialActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+.connectBtn {
+  display: inline-block;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  background: #5f2eea;
+  color: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+.connectBtn:hover {
+  opacity: 0.9;
+}
+.syncBtn {
+  padding: 0.35rem 0.75rem;
+  background: #5f2eea;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.syncBtn:hover {
+  opacity: 0.9;
+}
+.syncBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.disconnectBtn {
+  padding: 0.35rem 0.75rem;
+  background: none;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.disconnectBtn:hover {
+  background: #fdecea;
+}
+.socialHint {
+  font-size: 0.75rem;
+  color: #999;
+  font-style: italic;
+}
+
+.cancelBtn:hover {
+  background: #f5f0ff;
+}
+
+/* Categories */
+.categoryGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.categoryChip {
+  padding: 0.45rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 20px;
+  background: #fff;
+  color: #555;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.categoryChip:hover {
+  border-color: #5f2eea;
+  color: #5f2eea;
+}
+.categoryChipActive {
+  background: #5f2eea;
+  color: #fff;
+  border-color: #5f2eea;
+}
+.categoryChipActive:hover {
+  background: #4a1fd4;
+  color: #fff;
+}
+
+/* Gallery */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.galleryItem {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.galleryThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.galleryDeleteBtn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.galleryDeleteBtn:hover {
+  background: #e74c3c;
+}
+.galleryAddBtn {
+  aspect-ratio: 1;
+  border-radius: 12px;
+  border: 2px dashed #ccc;
+  background: #fafafa;
+  font-size: 2rem;
+  color: #999;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.galleryAddBtn:hover {
+  border-color: #5f2eea;
+  color: #5f2eea;
+}
+.galleryAddBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .banner { height: 150px; }
+  .bannerTitle { font-size: 1.5rem; }
+  .content { padding: 0 1rem 2rem; }
+  .formCard { padding: 1.25rem; }
+  .formRow { flex-direction: column; gap: 0; }
+  .socialCards { flex-direction: column; }
+  .galleryGrid { grid-template-columns: repeat(3, 1fr); }
+  .bannerPicker { right: 1rem; }
+}

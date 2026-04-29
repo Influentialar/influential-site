@@ -1,0 +1,226 @@
+/* src/components/SidebarCreators/SidebarCreators.module.css */
+
+.sidebar {
+  width: 280px;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.searchWrapper {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.searchInput {
+  width: 80%;
+  padding: 0.75rem 1rem;
+  padding-left: 3rem;
+  border-radius: 24px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.filterIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: #333;
+}
+
+.group {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.75rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.resetBtn {
+  background: none;
+  border: none;
+  color: #5f2eea;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.checkboxGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.checkboxGroupVertical {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #555;
+  cursor: pointer;
+}
+
+.rangeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+.rangeValue {
+  font-size: 0.875rem;
+  color: #777;
+}
+.rangeSub {
+  font-size: 0.75rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+.rangeWrapper {
+  position: relative;
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+}
+.track {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.thumb {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #5f2eea;
+  border-radius: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.starsWrapper {
+  display: flex;
+  gap: 0.25rem;
+  cursor: pointer;
+}
+.star {
+  width: 20px;
+  height: 20px;
+  fill: #f5b50a;
+}
+.starFilled {
+  font-size: 1.5rem;
+  color: #f5b50a;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.starFilled:hover {
+  transform: scale(1.2);
+}
+.starEmpty {
+  font-size: 1.5rem;
+  color: #ddd;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.starEmpty:hover {
+  transform: scale(1.2);
+}
+
+/* Dual range slider */
+.dualRange {
+  position: relative;
+  height: 28px;
+}
+.dualRange .rangeInput {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  height: 28px;
+}
+.dualRange .rangeInput::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #5f2eea;
+  cursor: pointer;
+  pointer-events: all;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.dualRange .rangeInput::-webkit-slider-runnable-track {
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+}
+.dualRange .rangeInput:first-child::-webkit-slider-runnable-track {
+  background: transparent;
+}
+
+/* Single range slider */
+.rangeInputSingle {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: #eee;
+  border-radius: 2px;
+  outline: none;
+}
+.rangeInputSingle::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #5f2eea;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+  .sidebar { width: 100%; }
+  .searchInput { width: 100% !important; }
+}

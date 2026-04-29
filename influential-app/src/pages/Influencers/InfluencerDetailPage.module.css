@@ -1,0 +1,628 @@
+/* src/pages/Influencers/InfluencerDetailPage.module.css */
+
+/* === PAGE WRAPPER === */
+.pageWrapper {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+/* === BANNER STRIP (LinkedIn-style) === */
+.banner {
+  position: relative;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0;
+}
+
+/* Search bar inside banner */
+.searchBar {
+  width: 100%;
+  padding-top: 1.25rem;
+}
+.backSearchWrapper {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.backButton {
+  background: rgba(0,0,0,0.2);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.backButton:hover {
+  background: rgba(0,0,0,0.3);
+}
+.backButton svg {
+  fill: #fff;
+  width: 20px;
+  height: 20px;
+}
+.searchInput {
+  flex: 1;
+  margin-left: 1rem;
+  height: 48px;
+  border-radius: 24px;
+  border: none;
+  padding: 0 1.5rem;
+  font-size: 1rem;
+  outline: none;
+  background: rgba(255,255,255,0.9);
+}
+.searchInput:focus {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Banner color picker */
+.bannerControl {
+  position: absolute;
+  top: 0.75rem;
+  right: 2rem;
+  z-index: 10;
+}
+.bannerEditBtn {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.bannerEditBtn:hover {
+  background: rgba(255,255,255,0.35);
+}
+.bannerPicker {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  background: #fff;
+  padding: 0.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+.bannerSwatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.bannerSwatch:hover {
+  transform: scale(1.15);
+}
+.bannerSwatchActive {
+  border-color: #fff;
+  transform: scale(1.15);
+  box-shadow: 0 0 0 2px #333;
+}
+
+/* Tabs on the banner */
+.tabNav {
+  display: flex;
+  justify-content: stretch;
+  gap: 0.75rem;
+  padding-bottom: 1.25rem;
+  padding-left: calc(2rem + 360px + 2rem);
+  padding-right: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.tab,
+.tabActive {
+  flex: 1;
+  padding: 0.7rem 0.5rem;
+  border-radius: 2rem;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  text-align: center;
+}
+.tab {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+.tab:hover {
+  background: rgba(255,255,255,0.4);
+}
+.tabActive {
+  background: #fff;
+  color: #5f2eea;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* === CONTENT AREA (white background) === */
+.contentArea {
+  background: #f5f5f5;
+  min-height: calc(100vh - 260px);
+}
+
+/* === MAIN LAYOUT === */
+.pageContainer {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+  gap: 2rem;
+}
+
+/* === LEFT PANEL (profile card overlapping banner) === */
+.leftPanel {
+  flex: 0 0 360px;
+  background-color: rgba(95, 46, 234, 0.85);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  margin-top: -230px;
+  z-index: 5;
+  height: fit-content;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.photoFrame {
+  margin: 1.5rem 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.photoFrame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1rem;
+}
+.profileDetails {
+  padding: 0.5rem 1.75rem 2rem;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stars { display: flex; margin-bottom: 0.75rem; }
+.starFilled { color: #d9ff00; font-size: 1.5rem; margin-right: 0.25rem; }
+.starEmpty { color: rgba(217,255,0,0.3); font-size: 1.5rem; margin-right: 0.25rem; }
+.username { margin: 0.5rem 0; font-size: 1.6rem; }
+.userLocation { font-size: 0.95rem; margin-bottom: 1rem; opacity: 0.9; }
+.bio { font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.25rem; opacity: 0.9; }
+.socialMetrics {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+.socialMetrics svg {
+  width: 24px;
+  height: 24px;
+}
+.socialMetrics span {
+  font-weight: 600;
+}
+.contactButton {
+  width: 100%;
+  background: #fff;
+  color: #5f2eea !important;
+  border: none;
+  border-radius: 24px;
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.contactButton:hover {
+  opacity: 0.9;
+}
+
+/* === RIGHT PANEL === */
+.rightPanel {
+  flex: 1;
+  padding-top: 1.5rem;
+}
+
+/* Tab content card */
+.tabContent {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+/* === CALIFICACIONES === */
+.ratingsRow {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+.chartBlock { min-width: 120px; }
+.metricBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100px;
+}
+.metricTitle { font-size: 0.9rem; margin-bottom: 0.5rem; color: #333; }
+.metricChart { display: flex; flex-direction: column; gap: 0.25rem; }
+.metricLine { display: flex; align-items: center; gap: 0.5rem; }
+.lineNumber { font-size: 0.75rem; color: #333; }
+.lineBar { flex: 1; height: 2px; background: #ddd; border-radius: 1px; min-width: 60px; }
+.metricDivider { width: 1px; height: 80px; background: #ddd; align-self: center; }
+.metricValue { margin: 0.25rem 0; font-weight: bold; font-size: 1.25rem; color: #333; }
+.metricIcon { width: 24px; height: 24px; fill: #333; margin-top: 0.25rem; }
+.sectionDivider { margin: 1.5rem 0; border: none; border-top: 1px solid #eee; }
+
+/* Collaboration grid */
+.collabGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.collabCard {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.collabCampaignImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+.collabHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1rem 0.5rem;
+}
+.collabLogo { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.collabInfo { display: flex; flex-direction: column; gap: 0.15rem; }
+.collabInfo strong { font-size: 0.95rem; }
+.collabInfo small { color: #888; font-size: 0.8rem; }
+.collabRating { font-size: 1rem; color: #f5c518; }
+.collabMeta {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  align-items: center;
+}
+.collabType {
+  background: #ede9fe;
+  color: #5b2eea;
+  border-radius: 12px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  width: fit-content;
+  font-weight: 600;
+}
+.collabStatus {
+  font-size: 0.75rem;
+  color: #666;
+}
+.collabText {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.5;
+  padding: 0 1rem 1rem;
+  margin: 0;
+}
+
+/* === GALERÍA === */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.galleryCard {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.galleryImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.2s;
+}
+.galleryImg:hover {
+  transform: scale(1.03);
+}
+
+/* === ESTADÍSTICAS === */
+.statsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.platformSelector {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  margin: 0 auto;
+}
+.platformBtn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: #6339e0;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+.sideMetrics {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.smallCard {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.smallPositive {
+  color: #4caf50;
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+}
+.chartsColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.donutCard,
+.barChartCard {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.donutWrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 1rem auto;
+}
+.donutSlice {
+  --p: 50;
+  --c: #5f2eea;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(var(--c) 0 calc(var(--p) * 1%), #ddd 0 100%);
+}
+.donutLabels {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+.dotPurple,
+.dotRed {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  margin-right: 0.25rem;
+}
+.dotPurple { background: #6339e0; }
+.dotRed    { background: #f14d76; }
+
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  height: 150px;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+}
+.barItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.barFill {
+  width: 16px;
+  background: #6339e0;
+  border-radius: 8px 8px 0 0;
+  transition: height 0.3s;
+}
+.barItem small {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.engagementGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.engagementCard {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.engagementCard svg {
+  width: 32px;
+  height: 32px;
+  fill: #5f2eea;
+}
+.engagementCard strong {
+  font-size: 1.25rem;
+  color: #333;
+}
+.engagementCard span {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* === STATS REDESIGN === */
+.platformSection {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+.platformHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+.platformLogo {
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: linear-gradient(135deg, #6339e0, #a78bfa);
+  border-radius: 12px;
+  fill: #fff;
+}
+.platformName {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #333;
+}
+.platformUser {
+  font-size: 0.9rem;
+  color: #888;
+}
+.statsCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+.statCardPrimary {
+  background: linear-gradient(135deg, #6339e0 0%, #a78bfa 100%);
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.statCardPrimary .statNumber {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #fff;
+}
+.statCardPrimary .statLabel {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.statCardSecondary {
+  background: #f8f6ff;
+  border: 1px solid #ede9fe;
+  border-radius: 1rem;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.statCardSecondary .statNumber {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #6339e0;
+}
+.statCardSecondary .statLabel {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabNavDesktop { display: flex; }
+.tabNavMobile { display: none; }
+
+@media (max-width: 768px) {
+  .tabNavDesktop { display: none; }
+  .tabNavMobile {
+    display: flex;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+  .banner { height: auto; min-height: 80px; padding-bottom: 0; }
+  .backSearchWrapper { padding: 0 1rem; }
+  .tabNav {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.75rem;
+    overflow-x: auto;
+    gap: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab, .tabActive { flex: none; padding: 0.5rem 1rem; font-size: 0.8rem; white-space: nowrap; }
+  .pageContainer {
+    flex-direction: column;
+    padding: 0 1rem 1.5rem;
+  }
+  .leftPanel {
+    flex: none;
+    width: 100%;
+    margin-top: 0;
+  }
+  .rightPanel { padding-top: 1rem; }
+  .ratingsRow { flex-wrap: wrap; }
+  .collabGrid { grid-template-columns: 1fr; }
+  .galleryGrid { grid-template-columns: repeat(2, 1fr); }
+  .statsGrid { grid-template-columns: 1fr; }
+  .engagementGrid { grid-template-columns: 1fr 1fr; }
+  .statsCards { grid-template-columns: 1fr 1fr; }
+  .bannerControl { right: 1rem; }
+}

@@ -1,0 +1,192 @@
+.sidebar {
+    width: 280px;
+    padding: 1rem;
+    background: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .searchWrapper {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+  .search {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 1px solid #ddd;
+    border-radius: 9999px;
+    outline: none;
+  }
+  .searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+    fill: #888;
+  }
+  .titleBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+  .filterIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: #333;
+  }
+  .sectionTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.75rem;
+  }
+  .sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+  .resetBtn {
+    background: none;
+    border: none;
+    color: #5f2eea;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+  .filterSection {
+    margin-bottom: 1.5rem;
+  }
+  .checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+  .checkboxGroupHorizontal {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .sidebar {
+    width: 280px;
+    padding: 1rem;
+  }
+  
+  /* Cada sección envuelta en "isla" con sombra más intensa */
+  .group {
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    /* Shadow más marcado */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Búsqueda */
+  .searchWrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .searchIcon {
+    width: 20px;
+    height: 20px;
+    fill: #888;
+  }
+  .searchInput {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+  }
+  
+  /* Título + filtro */
+  .titleBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .title {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600; /* un poco más bold */
+  }
+  .filterIcon {
+    width: 20px;
+    height: 20px;
+    fill: #555;
+  }
+  
+  /* Encabezado de sección con botón */
+  .sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sectionTitle {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600; /* negrita */
+  }
+  .resetBtn {
+    background: none;
+    border: none;
+    color: #5f2eea;
+    font-size: 0.85rem;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  /* Checkboxes verticales */
+  .checkboxGroupVertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .checkboxGroupHorizontal {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  /* Label general */
+  .checkboxLabel {
+    font-size: 0.9rem;
+  }
+  .checkboxLabel input {
+    margin-right: 0.5rem;
+  }
+  
+  /* Limpieza tipográfica */
+  h3, h4, label, span, button {
+    font-family: inherit;
+  }
+  
+  .searchWrapper {
+    position: relative;
+  }
+  
+  .searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 1rem;              /* ajusta para que quede alineado */
+    transform: translateY(-50%);
+    pointer-events: none;    /* para que no bloquee foco/click del input */
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 0.75rem 1rem;   /* padding vertical y a la derecha */
+    padding-left: 3rem;      /* deja hueco a la izquierda para el icono */
+    border-radius: 24px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+  }
+
+@media (max-width: 768px) {
+  .sidebar { width: 100%; }
+  .searchInput { width: 100% !important; }
+}
+  

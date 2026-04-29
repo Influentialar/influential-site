@@ -1,0 +1,411 @@
+/* src/components/ChatWindow/ChatWindow.module.css */
+
+.chatWindow {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #f9f9fb;
+  height: calc(100vh - 72px);
+  overflow: hidden;
+}
+
+/* Empty state */
+.emptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emptyState p {
+  color: #999;
+  font-size: 1.1rem;
+}
+
+/* Header */
+.chatHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.userInfo img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.userDetails {
+  display: flex;
+  flex-direction: column;
+}
+.userDetails h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.lastSeen {
+  font-size: 0.75rem;
+  color: #999;
+}
+.ugcTag {
+  background: #7c3aed;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Messages */
+.messagesList {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.noMessages {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.noMessages p {
+  color: #bbb;
+  font-size: 1rem;
+}
+
+.messageBubble {
+  max-width: 65%;
+  padding: 0.75rem 1rem;
+  border-radius: 1.25rem;
+  word-wrap: break-word;
+}
+.messageBubble p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.meBubble {
+  background: #5f2eea;
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 0.35rem;
+}
+.meBubble .time {
+  color: rgba(255,255,255,0.6);
+}
+
+.themBubble {
+  background: #fff;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 0.35rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.time {
+  display: block;
+  font-size: 0.7rem;
+  color: #aaa;
+  margin-top: 0.3rem;
+  text-align: right;
+}
+
+/* Input bar */
+.inputBar {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: #fff;
+  border-top: 1px solid #eee;
+  align-items: center;
+}
+.inputBar input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 24px;
+  border: 1px solid #eee;
+  font-size: 0.95rem;
+  outline: none;
+  background: #f9f9f9;
+  transition: border-color 0.2s;
+}
+.inputBar input:focus {
+  border-color: #5f2eea;
+  background: #fff;
+}
+
+.sendBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #5f2eea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.sendBtn svg {
+  fill: #fff;
+  width: 20px;
+  height: 20px;
+}
+.sendBtn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.sendBtn:not(:disabled):hover {
+  opacity: 0.85;
+}
+
+/* Header actions */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.dealBtn, .completeBtn, .reviewBtn, .campaignBtn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.dealBtn {
+  background: #5f2eea;
+  color: #fff;
+}
+.completeBtn {
+  background: #10b981;
+  color: #fff;
+}
+.reviewBtn {
+  background: #f59e0b;
+  color: #fff;
+}
+.campaignBtn {
+  background: linear-gradient(135deg, #ec4899, #f472b6);
+  color: #fff;
+}
+.dealBtn:hover, .completeBtn:hover, .reviewBtn:hover, .campaignBtn:hover {
+  opacity: 0.85;
+}
+.dealBtn:disabled, .completeBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Deal actions (accept/reject) */
+.dealActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.dealPending {
+  font-size: 0.8rem;
+  color: #f59e0b;
+  font-weight: 600;
+}
+.acceptBtn {
+  padding: 0.4rem 0.9rem;
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.rejectBtn {
+  padding: 0.4rem 0.9rem;
+  background: none;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.acceptBtn:hover { opacity: 0.85; }
+.rejectBtn:hover { background: #fdecea; }
+
+/* Deal banner */
+.dealBanner {
+  padding: 0.6rem 1.5rem;
+  background: #f8f6ff;
+  border-bottom: 1px solid #ede9fe;
+  font-size: 0.9rem;
+  color: #6339e0;
+}
+.dealBannerAction {
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #f8f6ff, #ede9fe);
+  border-bottom: 1px solid #d4c5fc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: #333;
+}
+.bannerBtns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Modals */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.modal {
+  background: #fff;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  width: 90%;
+  max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.15);
+}
+.modal h3 {
+  margin: 0 0 1.25rem;
+  font-size: 1.25rem;
+  color: #333;
+}
+.modalLabel {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #555;
+  margin: 1rem 0 0.4rem;
+}
+.modalInput {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  box-sizing: border-box;
+}
+.modalInput:focus {
+  border-color: #5f2eea;
+}
+.modalTextarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  resize: vertical;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.modalTextarea:focus {
+  border-color: #5f2eea;
+}
+.modalActions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.modalCancel {
+  flex: 1;
+  padding: 0.7rem;
+  background: #fff;
+  color: #666;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.modalSubmit {
+  flex: 1;
+  padding: 0.7rem;
+  background: #5f2eea;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.modalSubmit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.modalCancel:hover { background: #f5f5f5; }
+.modalSubmit:not(:disabled):hover { opacity: 0.85; }
+
+/* Star picker */
+.starPicker {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.starPickerActive, .starPickerInactive {
+  font-size: 1.75rem;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.starPickerActive { color: #f59e0b; }
+.starPickerInactive { color: #ddd; }
+.starPickerActive:hover, .starPickerInactive:hover {
+  transform: scale(1.15);
+}
+
+/* Rating rows in review modal */
+.ratingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+}
+.ratingLabel {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 500;
+}
+.ratingRow .starPicker {
+  margin-bottom: 0;
+}
+.ratingRow .starPickerActive,
+.ratingRow .starPickerInactive {
+  font-size: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .chatWindow { height: 60vh; }
+  .messageBubble { max-width: 85%; }
+  .inputBar { padding: 0.5rem 1rem; }
+  .headerActions { gap: 0.25rem; }
+  .dealBtn, .completeBtn, .reviewBtn, .campaignBtn { padding: 0.4rem 0.75rem; font-size: 0.75rem; }
+  .modal { width: 95%; padding: 1.5rem; }
+}

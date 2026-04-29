@@ -1,0 +1,193 @@
+/* ── Desktop styles ── */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #fff;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 2rem;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding-bottom: 0.25rem;
+}
+
+.linkActive {
+  text-decoration: none;
+  color: #5f2eea;
+  font-weight: 600;
+  border-bottom: 2px solid #5f2eea;
+  padding-bottom: 0.25rem;
+}
+
+.linkDisabled {
+  color: #999;
+  pointer-events: none;
+  cursor: default;
+  margin: 0 1rem;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.chatBtn {
+  background: none;
+  border: none;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.profileLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.profileAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #5f2eea;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.profileAvatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(95, 46, 234, 0.3);
+}
+
+.logoutBtn {
+  margin-left: 1rem;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 0.35rem 1rem;
+  font-size: 0.85rem;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.logoutBtn:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+/* ── Hamburger button (hidden on desktop) ── */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ── Mobile responsive (max-width: 768px) ── */
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+  }
+
+  .topBar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    margin-right: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Nav links: hidden by default, shown as vertical column when open */
+  .links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    padding: 0.5rem 0;
+    order: 3;
+  }
+
+  .linksOpen {
+    display: flex;
+  }
+
+  .links .link,
+  .links .linkActive,
+  .links .linkDisabled {
+    padding: 0.75rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .links .linkActive {
+    border-bottom: none;
+    background: rgba(95, 46, 234, 0.05);
+    border-left: 3px solid #5f2eea;
+  }
+
+  /* Right section: hidden by default on mobile, shown when menu is open */
+  .right {
+    display: none;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+    border-top: 1px solid #eee;
+    order: 4;
+  }
+
+  .rightOpen {
+    display: flex;
+  }
+
+  .chatBtn {
+    margin-right: 0;
+  }
+
+  .logoutBtn {
+    margin-left: auto;
+  }
+}

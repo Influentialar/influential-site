@@ -1,0 +1,28 @@
+/* src/pages/Creators/CreatorsPage.module.css */
+.main {
+  display: flex;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  flex: 1;
+  background: #f5f5f5;
+}
+.noResults {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #777;
+  font-size: 1.1rem;
+  padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  .main { flex-direction: column; }
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+}

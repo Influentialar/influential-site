@@ -1,0 +1,378 @@
+/* src/pages/Brands/BrandDetailPage.module.css */
+
+/* === PAGE WRAPPER === */
+.pageWrapper {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+/* === BANNER STRIP (LinkedIn-style) === */
+.banner {
+  position: relative;
+  height: 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 0;
+  background: linear-gradient(135deg, #ed4e4e 0%, #f08a5d 100%);
+}
+
+/* Search bar inside banner */
+.searchBar {
+  width: 100%;
+  padding-top: 1.25rem;
+}
+.backSearchWrapper {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.backButton {
+  background: rgba(0,0,0,0.2);
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.backButton:hover {
+  background: rgba(0,0,0,0.3);
+}
+.backButton svg {
+  fill: #fff;
+  width: 20px;
+  height: 20px;
+}
+.searchInput {
+  flex: 1;
+  margin-left: 1rem;
+  height: 48px;
+  border-radius: 24px;
+  border: none;
+  padding: 0 1.5rem;
+  font-size: 1rem;
+  outline: none;
+  background: rgba(255,255,255,0.9);
+}
+.searchInput:focus {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Tabs on the banner */
+.tabNav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-bottom: 1.25rem;
+  padding-left: calc(2rem + 360px + 2rem);
+  padding-right: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.tab,
+.tabActive {
+  flex: 1;
+  padding: 0.7rem 0.5rem;
+  border-radius: 2rem;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  text-align: center;
+}
+.tab {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  backdrop-filter: blur(4px);
+}
+.tab:hover {
+  background: rgba(255,255,255,0.4);
+}
+.tabActive {
+  background: #fff;
+  color: #5f2eea;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* === CONTENT AREA === */
+.contentArea {
+  background: #f5f5f5;
+  min-height: calc(100vh - 340px);
+}
+
+/* === MAIN LAYOUT === */
+.pageContainer {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 2rem;
+  gap: 2rem;
+}
+
+/* === LEFT PANEL (brand card overlapping banner) === */
+.leftPanel {
+  flex: 0 0 360px;
+  background-color: rgba(95, 46, 234, 0.85);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  margin-top: -230px;
+  z-index: 5;
+  height: fit-content;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+.logoFrame {
+  position: relative;
+  margin: 1.5rem 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #fff;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+}
+.logoImg {
+  width: 60%;
+  height: auto;
+}
+.favBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(255,255,255,0.8);
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.favBtn:hover {
+  background: #fff;
+}
+.favBtn svg {
+  fill: #6339e0;
+  width: 16px;
+  height: 16px;
+}
+.profileDetails {
+  padding: 0.5rem 1.75rem 2rem;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.handle {
+  margin: 0.5rem 0;
+  font-size: 1.6rem;
+}
+.loc {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+.bio {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  opacity: 0.9;
+}
+.contactBtn {
+  width: 100%;
+  background: #fff;
+  color: #5f2eea !important;
+  border: none;
+  border-radius: 24px;
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.contactBtn:hover {
+  opacity: 0.9;
+}
+
+/* === RIGHT PANEL === */
+.rightPanel {
+  flex: 1;
+  padding-top: 1.5rem;
+}
+
+/* Tab content card */
+.tabContent {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+/* === POSTULACIONES === */
+.postList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.postCard {
+  display: flex;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.postImg {
+  width: 40%;
+  object-fit: cover;
+}
+.postDetails {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+.postTitle {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #333;
+}
+.postCategory {
+  color: #888;
+  font-size: 0.8rem;
+}
+.postText {
+  font-size: 0.9rem;
+  color: #555;
+  flex: 1;
+  line-height: 1.4;
+}
+.applyBtn {
+  background: #5f2eea;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 0.6rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: opacity 0.2s;
+}
+.applyBtn:hover {
+  opacity: 0.9;
+}
+
+/* === COLABORACIONES === */
+.collabGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.collabCard {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #eee;
+}
+.collabImg {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+.collabCaption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(95, 46, 234, 0.85);
+  color: #fff;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* === GALERÍA === */
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+.galleryImg {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: transform 0.2s;
+}
+.galleryImg:hover {
+  transform: scale(1.03);
+}
+
+/* === TESTIMONIOS === */
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.testimonialCard {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+.testimonialText {
+  margin: 0;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.notFound {
+  text-align: center;
+  margin: 2rem;
+}
+
+@media (max-width: 768px) {
+  .banner { height: auto; min-height: 80px; padding-bottom: 0; }
+  .backSearchWrapper { padding: 0 1rem; }
+  .tabNav {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.75rem;
+    overflow-x: auto;
+    gap: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tab, .tabActive { flex: none; padding: 0.5rem 1rem; font-size: 0.8rem; white-space: nowrap; }
+  .pageContainer {
+    flex-direction: column;
+    padding: 0 1rem 1.5rem;
+  }
+  .leftPanel {
+    flex: none;
+    width: 100%;
+    margin-top: 0;
+  }
+  .rightPanel { padding-top: 1rem; }
+  .collabGrid { grid-template-columns: 1fr; }
+  .galleryGrid { grid-template-columns: 1fr 1fr; }
+  .testimonialsGrid { grid-template-columns: 1fr; }
+  .postCard { flex-direction: column; }
+  .postImg { width: 100%; height: 200px; }
+}
