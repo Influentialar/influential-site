@@ -77,7 +77,6 @@ export default function MyProfilePage() {
     { label: role === 'marca' ? 'Instagram o TikTok' : 'Instagram o TikTok', done: !!instagram || !!tiktok },
   ]
   const completionPct = Math.round((completionFields.filter(f => f.done).length / completionFields.length) * 100)
-  const missing = completionFields.filter(f => !f.done)
 
   const handlePhotoUpload = async (e) => {
     const file = e.target.files?.[0]
