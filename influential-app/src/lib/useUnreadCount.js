@@ -14,12 +14,27 @@ export function useUnreadCount(userId) {
   useEffect(() => {
     if (!userId) return
 
+    // Si nunca se seteó, inicializar a ahora para no marcar historial como no leído
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      localStorage.setItem(STORAGE_KEY, new Date().toISOString())
+    }
+
     const check = async () => {
-      const lastChecked = localStorage.getItem(STORAGE_KEY) || '1970-01-01T00:00:00Z'
+      const lastChecked = localStorage.getItem(STORAGE_KEY)
+
+      // Solo conversaciones donde participa este usuario
+      const { data: convos } = await supabase
+        .from('conversations')
+        .select('id')
+        .or(`participant_a.eq.${userId},participant_b.eq.${userId}`)
+
+      const convIds = (convos || []).map(c => c.id)
+      if (convIds.length === 0) { setHasUnread(false); return }
 
       const { data } = await supabase
         .from('messages')
         .select('id')
+        .in('conversation_id', convIds)
         .neq('sender_id', userId)
         .gt('created_at', lastChecked)
         .limit(1)
@@ -29,15 +44,21 @@ export function useUnreadCount(userId) {
 
     check()
 
-    // Real-time: cuando llega un mensaje nuevo de otra persona
     const channel = supabase
       .channel('unread-badge')
       .on(
         'postgres_changes',
         { event: 'INSERT', schema: 'public', table: 'messages' },
-        (payload) => {
+        async (payload) => {
           if (payload.new.sender_id !== userId) {
-            setHasUnread(true)
+            // Verificar que sea una conversación del usuario
+            const { data: conv } = await supabase
+              .from('conversations')
+              .select('id')
+              .eq('id', payload.new.conversation_id)
+              .or(`participant_a.eq.${userId},participant_b.eq.${userId}`)
+              .single()
+            if (conv) setHasUnread(true)
           }
         }
       )
