@@ -52,7 +52,8 @@ function AppRoutes() {
     return <Navigate to="/reset-password" replace />
   }
 
-  const needsOnboarding = isAuth && profile && !profile.handle
+  // Necesita onboarding si: está autenticado y (no tiene perfil todavía O no tiene handle)
+  const needsOnboarding = isAuth && (!profile || !profile.handle)
 
   // Allow social OAuth callbacks and the onboarding page itself through
   const onboardingPassthrough = ['/onboarding', '/auth/instagram/callback', '/auth/tiktok/callback']

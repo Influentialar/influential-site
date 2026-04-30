@@ -46,7 +46,29 @@ export function AuthProvider({ children }) {
       .eq('id', userId)
       .single()
 
-    if (!error && data) setProfile(data)
+    if (!error && data) {
+      setProfile(data)
+      setLoading(false)
+      return
+    }
+
+    // Fila no existe → crearla con los metadatos del usuario auth
+    if (error?.code === 'PGRST116') {
+      const { data: { user } } = await supabase.auth.getUser()
+      const meta = user?.user_metadata || {}
+      const { data: newProfile } = await supabase
+        .from('profiles')
+        .insert({
+          id:    userId,
+          email: user.email,
+          name:  meta.name  || '',
+          role:  meta.role  || 'influencer',
+        })
+        .select()
+        .single()
+      if (newProfile) setProfile(newProfile)
+    }
+
     setLoading(false)
   }
 
