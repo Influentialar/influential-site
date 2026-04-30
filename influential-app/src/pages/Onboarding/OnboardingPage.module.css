@@ -1,0 +1,434 @@
+/* src/pages/Onboarding/OnboardingPage.module.css */
+
+.page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #f3eeff 0%, #fafafa 60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem 3rem;
+}
+
+/* ── Top bar ─────────────────────────────────────────────────────────────── */
+.topBar {
+  width: 100%;
+  max-width: 560px;
+  padding: 1.5rem 0 1rem;
+  display: flex;
+  justify-content: center;
+}
+.logo {
+  height: 40px;
+}
+
+/* ── Step indicator ─────────────────────────────────────────────────────── */
+.stepRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 2rem;
+}
+.stepItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+.stepDot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #d1c4f8;
+  background: #fff;
+  color: #aaa;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+}
+.stepDot.active {
+  border-color: #6339e0;
+  background: #6339e0;
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(99,57,224,0.15);
+}
+.stepDot.done {
+  border-color: #6339e0;
+  background: #6339e0;
+  color: #fff;
+}
+.stepLabel {
+  font-size: 0.7rem;
+  color: #aaa;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.stepLabelActive {
+  color: #6339e0;
+  font-weight: 700;
+}
+.stepLine {
+  width: 48px;
+  height: 2px;
+  background: #e0d8f8;
+  margin: 0 4px;
+  margin-bottom: 20px; /* offset for label below dot */
+  transition: background 0.25s;
+}
+.stepLineDone {
+  background: #6339e0;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 2.5rem 2.5rem 2rem;
+  box-shadow: 0 8px 40px rgba(99,57,224,0.1), 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.error {
+  background: #fdecea;
+  color: #c0392b;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Step content ────────────────────────────────────────────────────────── */
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.welcomeEmoji {
+  font-size: 2.5rem;
+  line-height: 1;
+  text-align: center;
+}
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+  text-align: center;
+}
+.subtitle {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0;
+  text-align: center;
+  line-height: 1.5;
+}
+.cta {
+  font-size: 0.85rem;
+  color: #888;
+  background: #f7f4ff;
+  border-left: 3px solid #6339e0;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Photo area ─────────────────────────────────────────────────────────── */
+.photoArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0;
+}
+.photoCircle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #e0d8f8;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+  transition: border-color 0.2s;
+}
+.photoCircle:hover {
+  border-color: #6339e0;
+}
+.photoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.photoOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(99,57,224,0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.photoCircle:hover .photoOverlay {
+  opacity: 1;
+}
+.photoOverlayText {
+  font-size: 0.7rem;
+}
+.photoHint {
+  font-size: 0.8rem;
+  color: #999;
+  text-align: center;
+  margin: 0;
+}
+.optional {
+  color: #bbb;
+  font-size: 0.8em;
+}
+
+/* ── Form fields ─────────────────────────────────────────────────────────── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.field label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.field input,
+.field textarea {
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: #111;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+  resize: none;
+}
+.field input:focus,
+.field textarea:focus {
+  border-bottom-color: #6339e0;
+}
+.fieldHint {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+.required {
+  color: #e74c3c;
+}
+
+/* Handle input with @ prefix */
+.handleInput {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #e0e0e0;
+  transition: border-color 0.2s;
+}
+.handleInput:focus-within {
+  border-bottom-color: #6339e0;
+}
+.handleAt {
+  color: #6339e0;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.5rem 0.25rem 0.5rem 0;
+  user-select: none;
+}
+.handleInput input {
+  border: none !important;
+  padding-left: 0 !important;
+  flex: 1;
+}
+
+/* ── Category chips ──────────────────────────────────────────────────────── */
+.chipGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chip {
+  padding: 0.5rem 1rem;
+  border: 2px solid #e0d8f8;
+  border-radius: 20px;
+  background: #fff;
+  color: #555;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chip:hover {
+  border-color: #b8a4f8;
+  background: #f7f4ff;
+}
+.chipActive {
+  border-color: #6339e0;
+  background: #6339e0;
+  color: #fff;
+}
+
+/* ── Metrics box ─────────────────────────────────────────────────────────── */
+.metricsBox {
+  background: #f7f4ff;
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.metricsTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+.metricsHint {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0;
+  line-height: 1.4;
+}
+.metricsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── Social fields ───────────────────────────────────────────────────────── */
+.socialField {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+.socialIconBox {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-bottom: 2px;
+}
+.socialIconImg {
+  width: 24px;
+  height: 24px;
+}
+.socialInput {
+  flex: 1;
+}
+.socialDivider {
+  text-align: center;
+  color: #bbb;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+.socialNote {
+  font-size: 0.78rem;
+  color: #aaa;
+  text-align: center;
+  margin: 0.25rem 0 0;
+  line-height: 1.4;
+}
+
+/* ── Navigation actions ──────────────────────────────────────────────────── */
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+.backBtn {
+  padding: 0.75rem 1.25rem;
+  border: 2px solid #e0d8f8;
+  border-radius: 24px;
+  background: #fff;
+  color: #6339e0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.backBtn:hover {
+  background: #f7f4ff;
+  border-color: #6339e0;
+}
+.nextBtn {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  background: #6339e0;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.nextBtn:hover {
+  background: #572dd1;
+}
+.nextBtn:active {
+  transform: scale(0.98);
+}
+.nextBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.skipBtn {
+  display: block;
+  width: 100%;
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: underline;
+}
+.skipBtn:hover {
+  color: #777;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+.footer {
+  margin-top: 1.5rem;
+  font-size: 0.78rem;
+  color: #bbb;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .card {
+    padding: 2rem 1.5rem 1.5rem;
+    border-radius: 20px;
+  }
+  .stepLine {
+    width: 28px;
+  }
+  .metricsRow {
+    grid-template-columns: 1fr;
+  }
+}

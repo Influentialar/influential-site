@@ -24,6 +24,7 @@ import SignUpPage           from './pages/SignUp/SignUpPage'
 import LandingPage          from './pages/Landing/LandingPage'
 import HomePage             from './pages/Home/HomePage'
 import MyProfilePage        from './pages/MyProfile/MyProfilePage'
+import OnboardingPage       from './pages/Onboarding/OnboardingPage'
 import SocialCallback       from './pages/AuthCallback/SocialCallback'
 import ForgotPasswordPage   from './pages/ForgotPassword/ForgotPasswordPage'
 import ResetPasswordPage    from './pages/ResetPassword/ResetPasswordPage'
@@ -51,15 +52,13 @@ function AppRoutes() {
     return <Navigate to="/reset-password" replace />
   }
 
-  const needsOnboarding = isAuth && profile && !profile.handle && !profile.bio
+  const needsOnboarding = isAuth && profile && !profile.handle
 
-  if (needsOnboarding && location.pathname !== '/mi-perfil') {
-    return (
-      <>
-        <NavBar userRole={role} userEmail={profile?.email || ''} />
-        <Navigate to="/mi-perfil" replace />
-      </>
-    )
+  // Allow social OAuth callbacks and the onboarding page itself through
+  const onboardingPassthrough = ['/onboarding', '/auth/instagram/callback', '/auth/tiktok/callback']
+
+  if (needsOnboarding && !onboardingPassthrough.includes(location.pathname)) {
+    return <Navigate to="/onboarding" replace />
   }
 
   if (!isAuth) {
@@ -70,6 +69,16 @@ function AppRoutes() {
         <Route path="/reset-password" element={<ResetPasswordPage />} />
         <Route path="/landing"        element={<LandingPage />} />
         <Route path="*"               element={<LoginPage />} />
+      </Routes>
+    )
+  }
+
+  // Onboarding gets no NavBar — it has its own header
+  if (location.pathname === '/onboarding') {
+    return (
+      <Routes>
+        <Route path="/onboarding" element={<OnboardingPage />} />
+        <Route path="*" element={<Navigate to="/onboarding" replace />} />
       </Routes>
     )
   }
