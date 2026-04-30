@@ -8,7 +8,6 @@ import styles from './OnboardingPage.module.css'
 import logoImg        from '../../assets/logo.svg'
 import igIcon         from '../../assets/instagram.svg'
 import tkIcon         from '../../assets/tiktok.svg'
-import brandLogo      from '../../assets/brand-volvo.svg'
 import influencerPhoto from '../../assets/influencer1.svg'
 
 const TOTAL_STEPS = 4
@@ -75,7 +74,7 @@ export default function OnboardingPage() {
   const [error,  setError]  = useState('')
   const [saving, setSaving] = useState(false)
 
-  const defaultImg = role === 'marca' ? brandLogo : influencerPhoto
+  const defaultImg = role === 'marca' ? null : influencerPhoto
   const profileImg = photoUrl || defaultImg
   const welcome    = ROLE_WELCOME[role]
   const cats       = CATEGORIES[role]
@@ -208,7 +207,10 @@ export default function OnboardingPage() {
                 disabled={uploading}
                 type="button"
               >
-                <img src={profileImg} alt="Foto" className={styles.photoImg} />
+                {profileImg
+                  ? <img src={profileImg} alt="Foto" className={styles.photoImg} />
+                  : <div className={styles.photoPlaceholder}>🏷️</div>
+                }
                 <div className={styles.photoOverlay}>
                   <span>{uploading ? '⏳' : '📷'}</span>
                   <span className={styles.photoOverlayText}>
