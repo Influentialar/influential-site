@@ -8,7 +8,6 @@ import { useGallery } from '../../lib/useGallery'
 import { getInstagramAuthUrl, getTikTokAuthUrl, INSTAGRAM_CONFIG, TIKTOK_CONFIG } from '../../lib/socialConfig'
 import styles from './MyProfilePage.module.css'
 
-import brandLogo from '../../assets/brand-volvo.svg'
 import influencerPhoto from '../../assets/influencer1.svg'
 
 const bannerOptions = [
@@ -63,7 +62,7 @@ export default function MyProfilePage() {
   const [uploading, setUploading] = useState(false)
   const [msg,       setMsg]       = useState('')
 
-  const defaultImg = role === 'marca' ? brandLogo : influencerPhoto
+  const defaultImg = role === 'marca' ? null : influencerPhoto
   const profileImg = photoUrl || defaultImg
 
   // Profile completion
@@ -250,7 +249,10 @@ export default function MyProfilePage() {
         )}
         <div className={styles.photoSection}>
           <div className={styles.photoWrapper}>
-            <img src={profileImg} alt="Foto de perfil" className={styles.profilePhoto} />
+            {profileImg
+              ? <img src={profileImg} alt="Foto de perfil" className={styles.profilePhoto} />
+              : <div className={styles.profilePhotoPlaceholder}>🏷️</div>
+            }
             <input ref={fileRef} type="file" accept="image/*" style={{ display: 'none' }} onChange={handlePhotoUpload} />
             <button className={styles.changePhotoBtn} onClick={() => fileRef.current?.click()} disabled={uploading}>
               {uploading ? 'Subiendo...' : 'Cambiar foto'}
