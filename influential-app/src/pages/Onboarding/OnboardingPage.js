@@ -132,7 +132,6 @@ export default function OnboardingPage() {
       photo_url: photoUrl,
       instagram: instagram.startsWith('@') ? instagram : instagram ? '@' + instagram : '',
       tiktok:    tiktok.startsWith('@')    ? tiktok    : tiktok    ? '@' + tiktok    : '',
-      categories,
     }
 
     if (role === 'influencer') {
@@ -149,6 +148,14 @@ export default function OnboardingPage() {
       setError('Error al guardar: ' + (saveErr.message || saveErr))
       setSaving(false)
       return
+    }
+
+    // Guardar categorías en su tabla separada
+    if (categories.length > 0) {
+      await supabase.from('profile_categories').delete().eq('profile_id', profile.id)
+      await supabase.from('profile_categories').insert(
+        categories.map(cat => ({ profile_id: profile.id, category: cat }))
+      )
     }
 
     navigate(role === 'marca' ? '/influencers' : '/marcas')

@@ -153,7 +153,6 @@ export default function MyProfilePage() {
       photo_url: photoUrl,
       instagram,
       tiktok,
-      categories,
     }
 
     // Role-specific fields
@@ -172,9 +171,19 @@ export default function MyProfilePage() {
     const { error } = await updateProfile(updates)
     if (error) {
       setMsg('Error al guardar: ' + (error.message || error))
-    } else {
-      setMsg('Cambios guardados correctamente')
+      setSaving(false)
+      return
     }
+
+    // Guardar categorías en su tabla separada
+    await supabase.from('profile_categories').delete().eq('profile_id', profile.id)
+    if (categories.length > 0) {
+      await supabase.from('profile_categories').insert(
+        categories.map(cat => ({ profile_id: profile.id, category: cat }))
+      )
+    }
+
+    setMsg('Cambios guardados correctamente')
     setSaving(false)
   }
 
