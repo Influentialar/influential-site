@@ -247,6 +247,17 @@ export default function MyProfilePage() {
             <p>¡Perfil completo! Estás apareciendo en el marketplace.</p>
           </div>
         )}
+
+        <div className={styles.onboardingBanner}>
+          <div>
+            <p className={styles.onboardingBannerTitle}>¿Querés hacer el tutorial de configuración?</p>
+            <p className={styles.onboardingBannerSub}>Te guiamos paso a paso para completar tu perfil.</p>
+          </div>
+          <button className={styles.onboardingBannerBtn} onClick={() => navigate('/onboarding')}>
+            Iniciar tutorial →
+          </button>
+        </div>
+
         <div className={styles.photoSection}>
           <div className={styles.photoWrapper}>
             {profileImg
