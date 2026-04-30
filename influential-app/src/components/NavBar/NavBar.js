@@ -6,8 +6,8 @@ import styles from './NavBar.module.css'
 
 import logo             from '../../assets/logo.svg'
 import chatIcon         from '../../assets/chat.svg'
-import brandLogo        from '../../assets/brand-volvo.svg'
 import influencerPhoto  from '../../assets/influencer1.svg'
+import { useUnreadCount } from '../../lib/useUnreadCount'
 
 const LINKS = [
   { to: '/landing',     label: 'Sobre Influential' },
@@ -24,9 +24,8 @@ export default function NavBar({ userRole }) {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const dropdownRef = useRef(null)
 
-  const photoSrc = profile?.photo_url
-    ? profile.photo_url
-    : userRole === 'marca' ? brandLogo : influencerPhoto
+  const hasUnread = useUnreadCount(profile?.id)
+  const photoSrc = profile?.photo_url || (userRole === 'marca' ? null : influencerPhoto)
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -89,7 +88,10 @@ export default function NavBar({ userRole }) {
 
       <div className={`${styles.right} ${menuOpen ? styles.rightOpen : ''}`}>
         <Link to="/messages" className={styles.chatBtn} onClick={closeMenu}>
-          <img src={chatIcon} alt="Chat" />
+          <div className={styles.chatIconWrap}>
+            <img src={chatIcon} alt="Chat" />
+            {hasUnread && <span className={styles.unreadDot} />}
+          </div>
         </Link>
 
         <div className={styles.profileWrapper} ref={dropdownRef}>
@@ -97,13 +99,19 @@ export default function NavBar({ userRole }) {
             className={styles.profileBtn}
             onClick={() => { closeMenu(); setDropdownOpen(prev => !prev) }}
           >
-            <img src={photoSrc} alt="Mi perfil" className={styles.profileAvatar} />
+            {photoSrc
+            ? <img src={photoSrc} alt="Mi perfil" className={styles.profileAvatar} />
+            : <div className={styles.profileAvatarPlaceholder}>{userRole === 'marca' ? '🏷️' : '👤'}</div>
+          }
           </button>
 
           {dropdownOpen && (
             <div className={styles.dropdown}>
               <div className={styles.dropdownHeader}>
-                <img src={photoSrc} alt="" className={styles.dropdownAvatar} />
+                {photoSrc
+                  ? <img src={photoSrc} alt="" className={styles.dropdownAvatar} />
+                  : <div className={`${styles.dropdownAvatar} ${styles.dropdownAvatarPlaceholder}`}>{userRole === 'marca' ? '🏷️' : '👤'}</div>
+                }
                 <div>
                   <p className={styles.dropdownName}>{profile?.name || 'Mi cuenta'}</p>
                   <p className={styles.dropdownHandle}>{profile?.handle ? `@${profile.handle}` : profile?.email}</p>

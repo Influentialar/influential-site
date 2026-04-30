@@ -123,6 +123,27 @@ export function useMessages(userId) {
         text: text.trim(),
       })
 
+    if (!error) {
+      // Notificar al destinatario por email (fire-and-forget)
+      const conv = conversations.find(c => c.id === conversationId)
+      if (conv) {
+        const senderProfile = await supabase
+          .from('profiles')
+          .select('name')
+          .eq('id', userId)
+          .single()
+        fetch('/.netlify/functions/notify-message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            recipientId:    conv.participantId,
+            senderName:     senderProfile.data?.name || 'Alguien',
+            messagePreview: text.trim().slice(0, 120),
+          }),
+        }).catch(() => {}) // silencioso si falla
+      }
+    }
+
     return { error }
   }
 

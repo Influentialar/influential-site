@@ -6,6 +6,7 @@ import SidebarMessages from '../../components/SidebarMessages/SidebarMessages';
 import ChatWindow from '../../components/ChatWindow/ChatWindow';
 import { useAuth } from '../../lib/AuthContext';
 import { useMessages } from '../../lib/useMessages';
+import { markMessagesAsRead } from '../../lib/useUnreadCount';
 
 export default function MessagesPage() {
   const { chatId } = useParams();
@@ -15,6 +16,9 @@ export default function MessagesPage() {
 
   const [activeChatId, setActiveChatId] = useState(chatId ? parseInt(chatId) : null);
   const [searchTerm, setSearchTerm] = useState('');
+
+  // Marcar mensajes como leídos al entrar a la página
+  useEffect(() => { markMessagesAsRead() }, [])
 
   // Set active chat from URL or first conversation
   useEffect(() => {
